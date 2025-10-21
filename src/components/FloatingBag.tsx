@@ -107,7 +107,6 @@ export default function FloatingImage({
   const handleMouseDown = (e: React.MouseEvent) => handleDragStart(e.clientX, e.clientY);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent scrolling
     handleDragStart(e.touches[0].clientX, e.touches[0].clientY);
   };
 
@@ -171,7 +170,7 @@ export default function FloatingImage({
         alt={alt}
         width={width}
         height={height}
-        className="opacity-80 hover:opacity-100 transition-opacity"
+        className="w-full h-full opacity-80 hover:opacity-100 transition-opacity"
         draggable={false}
       />
     </div>

@@ -9,6 +9,11 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Check if page is already loaded (no spinner visible)
+    if (document.readyState === 'complete') {
+      setIsLoaded(true);
+    }
+
     // Listen for loading complete event from spinner
     const handleLoadingComplete = () => setIsLoaded(true);
     window.addEventListener('loadingComplete', handleLoadingComplete);
@@ -98,7 +103,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="h-screen relative overflow-hidden w-full">
+      <div className="h-screen relative overflow-hidden w-full mb-0">
         {/* Text content - behind bags */}
         <div className="relative z-0 flex flex-col items-center justify-center h-full text-center pointer-events-none">
           <h1 className="text-9xl font-black leading-none flex flex-col justify-center title-outline">
@@ -233,7 +238,7 @@ export default function Home() {
         </button>
         {openSection === "projects" && (
           <div className="px-8 pb-16 my-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 px-40">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 md:px-40">
               {projects.map((project) => (
                 <ProjectCard
                   key={project.href}

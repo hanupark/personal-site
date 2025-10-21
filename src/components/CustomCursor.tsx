@@ -12,13 +12,7 @@ export default function CustomCursor() {
     // Initialize audio
     audioRef.current = new Audio("/audio/click.m4a");
 
-    const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseDown = () => {
-      setIsPressed(true);
-      // Play click sound
+    const playClickSound = () => {
       if (audioRef.current) {
         audioRef.current.currentTime = 0; // Reset to start
         audioRef.current.play().catch(() => {
@@ -27,16 +21,36 @@ export default function CustomCursor() {
       }
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleMouseDown = () => {
+      setIsPressed(true);
+      playClickSound();
+    };
+
     const handleMouseUp = () => setIsPressed(false);
+
+    const handleTouchStart = () => {
+      setIsPressed(true);
+      playClickSound();
+    };
+
+    const handleTouchEnd = () => setIsPressed(false);
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);
 
@@ -54,7 +68,9 @@ export default function CustomCursor() {
         alt="cursor"
         width={96}
         height={96}
-        className="w-24 h-24"
+        className="w-24"
+        style={{ width: "auto", height: "auto" }}
+        priority={false}
       />
     </div>
   );

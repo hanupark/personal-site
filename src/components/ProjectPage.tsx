@@ -26,13 +26,15 @@ export default function ProjectPage({
   children,
 }: ProjectPageProps) {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       {/* Title Section */}
       <section className="w-full bg-[#DC143C]">
-        <div className="max-w-6xl mx-auto px-8 pt-24 pb-8">
-          <h1 className="text-6xl md:text-9xl font-black leading-none text-white flex flex-row items-end gap-2 md:gap-4">
-            <span>{title}</span>
-            <span className="text-xl md:text-2xl font-light whitespace-nowrap">{subtitle}</span>
+        <div className="max-w-6xl mx-auto px-4 md:px-8 pt-20 md:pt-24 pb-8">
+          <h1 className="text-6xl md:text-9xl font-black leading-none text-white">
+            <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-4">
+              <span>{title}</span>
+              <span className="text-xl md:text-2xl font-light whitespace-nowrap">{subtitle}</span>
+            </div>
           </h1>
           {link && (
             <a
