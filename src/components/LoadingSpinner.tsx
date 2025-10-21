@@ -17,16 +17,29 @@ export default function LoadingSpinner() {
 
   // Wait for all images to load
   useEffect(() => {
-    const images = Array.from(document.images);
-    const promises = images.map((img) =>
-      img.complete
-        ? Promise.resolve()
-        : new Promise((resolve) => {
-            img.onload = img.onerror = resolve;
-          })
-    );
+    // Wait for the window load event which fires after all resources are loaded
+    const handleLoad = () => {
+      // Double-check all images are actually loaded
+      const images = Array.from(document.images);
+      const promises = images.map((img) =>
+        img.complete
+          ? Promise.resolve()
+          : new Promise((resolve) => {
+              img.onload = img.onerror = resolve;
+            })
+      );
 
-    Promise.all(promises).then(() => setLoadingComplete(true));
+      Promise.all(promises).then(() => setLoadingComplete(true));
+    };
+
+    if (document.readyState === 'complete') {
+      // Page already loaded
+      handleLoad();
+    } else {
+      // Wait for window load event
+      window.addEventListener('load', handleLoad);
+      return () => window.removeEventListener('load', handleLoad);
+    }
   }, []);
 
   // Detect when rotation hits 0° after loading completes

@@ -39,7 +39,7 @@ export default function Home() {
     {
       title: "Marketing Head",
       subtitle: "HackMIT 2022",
-      thumbnail: "/images/hackmit/Logo.png",
+      thumbnail: "/images/hackmit/logo.png",
       href: "/projects/hack-mit",
     },
     {

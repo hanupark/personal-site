@@ -22,7 +22,7 @@ export default function TinyHome() {
       title="Guest House"
       subtitle="Gropius Tiny Home"
       description={`Inspired by the Bauhaus principles of the Gropius House, this tiny home is designed as an aesthetic architectural experience in a compact footprint. The project uses laser-cut Masonite panels and 3D-printed windows to capture material detail and form. A physical section model was crafted to explore spatial dynamics and light within the tiny structure, emphasizing thoughtful design at a small scale.`}
-      collaborators={[""]}
+      collaborators={[]}
       tools={["Rhino", "Climate Studio, LuBan"]}
       skills={["woodworking, metalworking, 3D modeling, 3D printing"]}
       images={images}

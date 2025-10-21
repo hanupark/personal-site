@@ -37,7 +37,7 @@ On the design side, I created the logo for The Venue Collective, a new brand lau
 In addition to technical and design work, I planned a 30-person corporate offsite with a $150K budget, managing logistics, vendor coordination, and on-site execution from start to finish.
 
 This internship taught me how to build quickly, prioritize user needs, and work cross-functionally in a fast-paced environment.`}
-        collaborators={[""]}
+        collaborators={[]}
         tools={[
           "Next.js, Tailwind, Figma, Supabase, Python, Playwright Google Cloud",
         ]}
