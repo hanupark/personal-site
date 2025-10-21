@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -48,9 +49,11 @@ export default function CustomCursor() {
         transform: "translate(-30%, -75%)",
       }}
     >
-      <img
+      <Image
         src={isPressed ? "/images/Tongs-closed.png" : "/images/Tongs-open.png"}
         alt="cursor"
+        width={96}
+        height={96}
         className="w-24 h-24"
       />
     </div>

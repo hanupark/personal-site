@@ -2,7 +2,6 @@
 
 import FloatingImage from "@/components/FloatingBag";
 import ProjectCard from "@/components/ProjectCard";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -173,7 +172,7 @@ export default function Home() {
             <div className="relative flex flex-col md:flex-row gap-8">
               <div className="flex-1">
                 <p className="text-lg font-black text-black leading-relaxed">
-                  hanna is hanu. MIT '25 – B.S. in{" "}
+                  hanna is hanu. MIT &apos;25 – B.S. in{" "}
                   <a
                     className="hover:underline"
                     href="https://catalog.mit.edu/degree-charts/architecture-course-4-b/"

@@ -43,7 +43,7 @@ export default function FloatingImage({
   // Use refs for values that change but shouldn't trigger re-renders
   const velocityRef = useRef({ x: initialVelocityX, y: initialVelocityY });
   const rotationSpeedRef = useRef(0.5);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   // Initialize position and rotation client-side to avoid hydration mismatch
   useEffect(() => {

@@ -25,16 +25,6 @@ export default function ProjectPage({
   link,
   children,
 }: ProjectPageProps) {
-  // Split images into three columns
-  const splitIntoColumns = (arr: string[], numColumns: number) => {
-    const columns: string[][] = Array.from({ length: numColumns }, () => []);
-    arr.forEach((item, index) => {
-      columns[index % numColumns].push(item);
-    });
-    return columns;
-  };
-
-  const imageColumns = splitIntoColumns(images, 2);
   return (
     <main className="min-h-screen">
       {/* Title Section */}
@@ -103,9 +93,11 @@ export default function ProjectPage({
             <div className="space-y-4">
               {images.map((imagePath, index) => (
                 <div key={index} className="relative w-full">
-                  <img
+                  <Image
                     src={imagePath}
                     alt={`${title} image ${index + 1}`}
+                    width={1200}
+                    height={800}
                     className="w-full h-auto"
                   />
                 </div>
