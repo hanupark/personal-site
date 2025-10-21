@@ -165,7 +165,7 @@ export default function Home() {
         </div>
       </div>
 
-      <hr className="w-full border-t-2 border-[#DC143C]" />
+      <hr className="w-full border-t-2 border-[var(--color-primary)]" />
 
       {/* About Accordion */}
       <section id="about" className="w-full max-w-6xl px-8">
@@ -221,7 +221,7 @@ export default function Home() {
         )}
       </section>
 
-      <hr className="w-full border-t-2 border-[#DC143C]" />
+      <hr className="w-full border-t-2 border-[var(--color-primary)]" />
 
       {/* Projects Accordion */}
       <section id="projects" className="w-full max-w-6xl px-8">
@@ -253,7 +253,7 @@ export default function Home() {
         )}
       </section>
 
-      <hr className="w-full border-t-2 border-[#DC143C]" />
+      <hr className="w-full border-t-2 border-[var(--color-primary)]" />
 
       {/* Blog Accordion */}
       <section id="blog" className="w-full max-w-6xl px-8">

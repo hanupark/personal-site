@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 px-8 py-4 text-lg z-50 transition-transform duration-300 bg-white border-b-2 border-[#DC143C] ${
+      className={`fixed top-0 left-0 right-0 px-8 py-4 text-lg z-50 transition-transform duration-300 bg-white border-b-2 border-[var(--color-primary)] ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >

@@ -2,7 +2,7 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#DC143C] px-8 py-4 text-lg">
+    <footer className="w-full bg-[var(--color-primary)] px-8 py-4 text-lg">
       <div className="flex justify-between items-center">
         <div className="text-white font-black">
           <p>© {new Date().getFullYear()} HANU</p>

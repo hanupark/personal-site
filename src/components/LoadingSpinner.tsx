@@ -100,7 +100,7 @@ export default function LoadingSpinner() {
       <div className="relative w-20 h-20">
         <div
           ref={spinnerRef}
-          className="absolute inset-0 bg-[#DC143C] rounded-full flex items-center justify-center animate-spin"
+          className="absolute inset-0 bg-[var(--color-primary)] rounded-full flex items-center justify-center animate-spin"
           style={{ animationPlayState: isSpinning ? "running" : "paused" }}
         >
           {/* Thank you bag smiley */}

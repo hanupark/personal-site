@@ -28,7 +28,7 @@ export default function ProjectPage({
   return (
     <main className="min-h-screen overflow-x-hidden">
       {/* Title Section */}
-      <section className="w-full bg-[#DC143C]">
+      <section className="w-full bg-[var(--color-primary)]">
         <div className="max-w-6xl mx-auto px-4 md:px-8 pt-20 md:pt-24 pb-8">
           <h1 className="text-6xl md:text-9xl font-black leading-none text-white">
             <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-4">
@@ -78,7 +78,7 @@ export default function ProjectPage({
       </section>
 
       {/* Red line under metadata - spans full width */}
-      <hr className="w-full border-t-2 border-[#DC143C]" />
+      <hr className="w-full border-t-2 border-[var(--color-primary)]" />
 
       {/* Two column section with 1:2 ratio */}
       <section className="w-full max-w-6xl mx-auto px-8 my-8">
