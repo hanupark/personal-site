@@ -2,11 +2,18 @@
 
 import { useState, useEffect, useRef } from "react";
 
-// Get animation durations from CSS variables
-const getDuration = (varName: string) =>
-  typeof window !== "undefined"
-    ? parseInt(getComputedStyle(document.documentElement).getPropertyValue(varName)) || 0
-    : 0;
+// Get animation durations from CSS variables (in milliseconds)
+const getDuration = (varName: string) => {
+  if (typeof window === "undefined") return 0;
+  const value = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+  // Parse value like "900ms" or "1.2s" to milliseconds
+  if (value.endsWith('ms')) {
+    return parseInt(value);
+  } else if (value.endsWith('s')) {
+    return parseFloat(value) * 1000;
+  }
+  return 0;
+};
 
 export default function LoadingSpinner() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,10 +40,8 @@ export default function LoadingSpinner() {
     };
 
     if (document.readyState === 'complete') {
-      // Page already loaded
       handleLoad();
     } else {
-      // Wait for window load event
       window.addEventListener('load', handleLoad);
       return () => window.removeEventListener('load', handleLoad);
     }
@@ -62,11 +67,13 @@ export default function LoadingSpinner() {
           // Stop when upright (within 5° of 0°)
           if (normalized < 5 || normalized > 355) {
             setIsSpinning(false);
-            const pauseDuration = getDuration("--duration-spinner-pause");
-            const fadeDuration = getDuration("--duration-fade");
+            const pauseDuration = getDuration("--duration-spinner-pause") || 900;
+            const fadeDuration = getDuration("--duration-fade") || 1200;
 
             setTimeout(() => {
               setFadeOut(true);
+              // Dispatch event when fade starts so page can trigger animations
+              window.dispatchEvent(new Event('loadingComplete'));
               setTimeout(() => setIsLoading(false), fadeDuration);
             }, pauseDuration);
             return;

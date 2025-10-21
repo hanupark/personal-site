@@ -6,6 +6,14 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [openSection, setOpenSection] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Listen for loading complete event from spinner
+    const handleLoadingComplete = () => setIsLoaded(true);
+    window.addEventListener('loadingComplete', handleLoadingComplete);
+    return () => window.removeEventListener('loadingComplete', handleLoadingComplete);
+  }, []);
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
@@ -94,20 +102,20 @@ export default function Home() {
         {/* Text content - behind bags */}
         <div className="relative z-0 flex flex-col items-center justify-center h-full text-center pointer-events-none">
           <h1 className="text-9xl font-black leading-none flex flex-col justify-center title-outline">
-            <span className="animate-dissolve-in opacity-0 [animation-delay:200ms]">
+            <span className={isLoaded ? 'animate-dissolve-in opacity-0 [animation-delay:200ms]' : 'opacity-0'}>
               HANU
             </span>
-            <span className="animate-dissolve-in opacity-0 [animation-delay:500ms]">
+            <span className={isLoaded ? 'animate-dissolve-in opacity-0 [animation-delay:500ms]' : 'opacity-0'}>
               HANU
             </span>
-            <span className="animate-dissolve-in opacity-0 [animation-delay:800ms]">
+            <span className={isLoaded ? 'animate-dissolve-in opacity-0 [animation-delay:800ms]' : 'opacity-0'}>
               HANU
             </span>
           </h1>
-          <p className="text-4xl mt-6 text-solid animate-dissolve-in opacity-0 [animation-delay:1100ms]">
-            Have A Nice Day
+          <p className={isLoaded ? 'text-4xl mt-6 text-solid animate-dissolve-in opacity-0 [animation-delay:1100ms]' : 'text-4xl mt-6 text-solid opacity-0'}>
+            Have A Nice Update
           </p>
-          <p className="text-4xl mt-2 text-solid animate-dissolve-in opacity-0 [animation-delay:1100ms]">
+          <p className={isLoaded ? 'text-4xl mt-2 text-solid animate-dissolve-in opacity-0 [animation-delay:1100ms]' : 'text-4xl mt-2 text-solid opacity-0'}>
             ↓
           </p>
         </div>
